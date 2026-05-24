@@ -1,0 +1,1 @@
+/home/leo/Rust/basics/target/debug/basics: /home/leo/Rust/basics/src/main.rs /home/leo/Rust/basics/src/module/mod.rs /home/leo/Rust/basics/src/module/p01_simple_basics.rs
