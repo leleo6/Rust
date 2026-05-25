@@ -1,5 +1,4 @@
-use core::num;
-use std::{error, io};
+use std::{io};
 
 pub fn cotizacion_estudiantes(){
     let mut precio_comida = String::new();
