@@ -1,51 +1,61 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/core";
 import "./App.css";
-
 function App() {
-  const [greetMsg, setGreetMsg] = useState("");
-  const [name, setName] = useState("");
-
-  async function greet() {
-    // Learn more about Tauri commands at https://tauri.app/develop/calling-rust/
-    setGreetMsg(await invoke("greet", { name }));
+  // 1. Declarar los estados dentro de App
+  const [nombre, setNombre] = useState("");
+  const [cantidad, setCantidad] = useState(1);
+  const [precio, setPrecio] = useState(0.0);
+  const [resultado, setResultado] = useState("");
+  // 2. Definir la función de cotizar dentro de App
+  async function cotizar() {
+    try {
+      const respuesta = await invoke<string>("calcular_cotizacion", {
+        item: {
+          nombre: nombre,
+          cantidad: Number(cantidad),
+          precio: Number(precio),
+        },
+      });
+      setResultado(respuesta);
+    } catch (error) {
+      console.error("Error al calcular la cotización:", error);
+    }
   }
-
+  // 3. El return con el HTML va dentro de App
   return (
     <main className="container">
-      <h1>Welcome to Tauri + React</h1>
-
-      <div className="row">
-        <a href="https://vite.dev" target="_blank">
-          <img src="/vite.svg" className="logo vite" alt="Vite logo" />
-        </a>
-        <a href="https://tauri.app" target="_blank">
-          <img src="/tauri.svg" className="logo tauri" alt="Tauri logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <p>Click on the Tauri, Vite, and React logos to learn more.</p>
-
+      <h3>Calcular Cotización</h3>
       <form
-        className="row"
         onSubmit={(e) => {
           e.preventDefault();
-          greet();
+          cotizar();
         }}
+        style={{ display: "flex", flexDirection: "column", gap: "10px", marginTop: "20px" }}
       >
         <input
-          id="greet-input"
-          onChange={(e) => setName(e.currentTarget.value)}
-          placeholder="Enter a name..."
+          type="text"
+          placeholder="Nombre del artículo"
+          value={nombre}
+          onChange={(e) => setNombre(e.target.value)}
         />
-        <button type="submit">Greet</button>
+        <input
+          type="number"
+          placeholder="Cantidad"
+          value={cantidad}
+          onChange={(e) => setCantidad(Number(e.target.value))}
+        />
+        <input
+          type="number"
+          step="0.01"
+          placeholder="Precio"
+          value={precio}
+          onChange={(e) => setPrecio(Number(e.target.value))}
+        />
+        <button type="submit">Calcular en Rust</button>
       </form>
-      <p>{greetMsg}</p>
+      {resultado && <p style={{ fontWeight: "bold", marginTop: "10px" }}>{resultado}</p>}
     </main>
   );
-}
-
+} // <-- Aquí es donde verdaderamente debe cerrar la función App
 export default App;
