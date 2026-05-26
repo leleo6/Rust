@@ -1,9 +1,11 @@
 use std::io;
-struct posibles_comidas{
+#[allow(dead_code)]
+struct PosiblesComidas{
     nombre: String,
     precio: f64,
     porciones:i32,
 }
+#[allow(dead_code)]
 pub fn cotizacion_nivel2(){
 
     let mut nombre_01 = String::new();
@@ -24,17 +26,19 @@ pub fn cotizacion_nivel2(){
 
     // combertimos y limpiamos los datos los mandamos al struct
 
-    let PRODUCTO_FINAL = posibles_comidas{
+    let _producto_final = PosiblesComidas{
         nombre: nombre_01.trim().to_string(),
         precio: precio_01.trim().parse().expect("precio invalido"),
         porciones: porciones_01.trim().parse().expect("invalido")
     };
-    let CANTIDAD_ESTUDIANTES_FINAL: i32= cantidad_estudiantes.trim().parse().expect("cantidad de estudiantes invalida"); 
+    let _cantidad_estudiantes_final: i32= cantidad_estudiantes.trim().parse().expect("cantidad de estudiantes invalida"); 
 
     //calculamos los resultados
     
 
     
+ 
+
 
 
 

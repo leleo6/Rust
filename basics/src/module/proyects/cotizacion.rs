@@ -17,14 +17,14 @@ pub fn cotizacion_estudiantes(){
     print!("cantidad ingresada: {cantidad_estudiantes}");
     println!("precio ingresado: {precio_comida}");
 
-    let PRECIO : f64 = match precio_comida.trim().parse(){
+    let precio : f64 = match precio_comida.trim().parse(){
         Ok(num) => num,
         Err(_) => {
             println!("error en la lectura");
             return;
         }
     };
-    let CANTIDAD : f64 = match cantidad_estudiantes.trim().parse(){
+    let cantidad : f64 = match cantidad_estudiantes.trim().parse(){
         Ok(num) => num,
         Err(_) => {
             println!("error en la lectura");
@@ -32,7 +32,7 @@ pub fn cotizacion_estudiantes(){
         }
     };
 
-    let mut precio_final:f64 = PRECIO*CANTIDAD;
+    let precio_final:f64 = precio*cantidad;
 
     println!("el valor a pagar es: {precio_final}");
     

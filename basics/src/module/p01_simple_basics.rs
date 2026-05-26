@@ -1,5 +1,7 @@
+#[allow(dead_code)]
 fn funciones(mut baisco:i32, caratacter:char) ->i32{ //para que la funcion tenga un retorno siempre hay que especificar el tipo
     print!("{}",caratacter);
+    let _ = baisco;
     baisco = 1;
     baisco + 12  // el valor a retornar no debe tener ; 
 }
@@ -30,7 +32,7 @@ pub fn basic_main(){
     }
 
     //ciclos
-    for i in 1..=5{
+    for _ in 1..=5{
         //del 5 ciclos
     }
     while _num1 == 0 {
