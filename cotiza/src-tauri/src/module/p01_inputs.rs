@@ -1,6 +1,6 @@
 // Necesitamos importar esto para que Rust pueda transformar el JSON de JS en nuestro Struct
 use serde::Deserialize;
-
+use tauri::Emitter;
 #[derive(Deserialize)] // Le dice a Rust que este struct se puede crear a partir de datos externos (JS)
 pub struct ItemCotizacion {
     nombre: String,
