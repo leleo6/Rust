@@ -7,7 +7,7 @@ enum EstadoCivil {
     Desconocido,
 }
 
-// Le damos superpoderes a nuestro Enum
+// comosi fuera programacion orientada a objetos
 impl EstadoCivil {
     // Un método que recibe un texto y devuelve un EstadoCivil
     fn desde_texto(texto: &str) -> Self {
