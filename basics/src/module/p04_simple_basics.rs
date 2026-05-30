@@ -1,4 +1,6 @@
 use core::num;
+use std::collections::HashMap;
+use std::collections::hash_map;
 use std::io;
 
 use std::collections;
@@ -21,9 +23,9 @@ pub fn manejo_datos(){
     for precio in &precios {
         println!("Precio: {precio}");
     }
-
-
-
-    
+    //clave valor
+    let mut puntuaciones = HashMap::new();
+    puntuaciones.insert("azul", 10);
+    puntuaciones.insert("azul", 120);
 
 }
