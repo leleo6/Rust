@@ -59,7 +59,7 @@ pub fn adso_cotizacion_comida(){
         let mut entrada_porciones: String =String::new();
         let mut entrada_consumidores: String =String::new();
 
-        
+
         contador += 1;
         println!("------- COTIZACION {} --------",contador);
         println!("Ingresa el nombre del Producto");
@@ -108,7 +108,7 @@ pub fn adso_cotizacion_comida(){
         nombre   : {}\n\
         precio   : {}\n\
         cantidad : {}\n\n\
-        primer total : {}\n",
+        segundo total : {}\n",
         opcion_02.nombre,
         opcion_02.precio,
         opcion_02.cantidad_necesaria_del_producto(),
