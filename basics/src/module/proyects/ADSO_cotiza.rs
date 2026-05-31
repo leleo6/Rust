@@ -11,7 +11,7 @@ impl productos {
     fn cantidad_necesaria_del_producto(&self) -> i32 {
         let mut cantidad_producto: i32 = 0;
         
-        // Comparamos valores directamente, no referencias
+        // Comparamos valores directamente
         if self.cantidad_consumidores > self.numero_porciones {
             loop {
                 cantidad_producto += 1;
@@ -36,7 +36,7 @@ impl productos {
 
 
 pub fn adso_cotizacion_comida(){
-    // entradas
+    // entradas pro
 
     let mut entrada_nombre:String =String::new();
     let mut entrada_precio:String =String::new();
@@ -56,14 +56,28 @@ pub fn adso_cotizacion_comida(){
     io::stdin().read_line(&mut entrada_consumidores).expect("error en la lectura de los consumidores");
 
     // limpiamos y transformamos los datos
-    let opcion_01:productos =productos { 
+    let opcion_01:productos = productos { 
         nombre: entrada_nombre.trim().to_string(), 
         precio: entrada_precio.trim().parse().expect("error al convertir precio"), 
         numero_porciones: entrada_porciones.trim().parse().expect("error al convertir precio"), 
         cantidad_consumidores: entrada_consumidores.trim().parse().expect("error al convertir precio"),  
     };
-    println!("cantidad de produtos a comprar : {}",opcion_01.cantidad_necesaria_del_producto());
-    println!("precio total a pagar: {}",opcion_01.costo_total());
+
+    // imprime la facturafacturacion
+
+    let mensaje_factura = format!(
+        "\n------FACTURA------\n\
+        nombre   : {}\n\
+        precio   : {}\n\
+        cantidad : {}\n\n\
+        primer total : {}\n",
+        opcion_01.nombre,
+        opcion_01.precio,
+        opcion_01.cantidad_necesaria_del_producto(),
+        opcion_01.costo_total()
+    );
+
+    println!("{}", mensaje_factura);
 
     
 }
