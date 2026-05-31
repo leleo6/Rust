@@ -1,4 +1,4 @@
-use std::io;
+use std::{fmt::format, io, sync::BarrierWaitResult};
 
 struct productos {
     nombre: String,
@@ -36,36 +36,62 @@ impl productos {
 
 
 pub fn adso_cotizacion_comida(){
-    // entradas pro
-
-    let mut entrada_nombre:String =String::new();
-    let mut entrada_precio:String =String::new();
-    let mut entrada_porciones: String =String::new();
-    let mut entrada_consumidores: String =String::new();
 
     //solicitamos datos
+    let mut contador : i32 = 0;
+    let mut opcion_01:productos = productos { 
+            nombre:format!("hola"),
+            precio: 0.0,
+            numero_porciones: 0,
+            cantidad_consumidores: 0, 
+        };
+    let mut opcion_02:productos = productos { 
+            nombre:format!("hola"),
+            precio: 0.0,
+            numero_porciones: 0,
+            cantidad_consumidores: 0, 
+        };
+    loop {
+        // entradas pro
 
-    println!("-------COTIZACION--------");
-    println!("Ingresa el nombre del Producto");
-    io::stdin().read_line(&mut entrada_nombre).expect("error en la lectura del nombre");
-    println!("Ingresa el precio del Producto");
-    io::stdin().read_line(&mut entrada_precio).expect("error en la lectura del precio");
-    println!("Ingresa el numero de porciones del Producto");
-    io::stdin().read_line(&mut entrada_porciones).expect("error en la lectura del numero de porciones");
-    println!("Ingresa el la cantidad de consumidores del Producto");
-    io::stdin().read_line(&mut entrada_consumidores).expect("error en la lectura de los consumidores");
+        let mut entrada_nombre:String =String::new();
+        let mut entrada_precio:String =String::new();
+        let mut entrada_porciones: String =String::new();
+        let mut entrada_consumidores: String =String::new();
 
-    // limpiamos y transformamos los datos
-    let opcion_01:productos = productos { 
-        nombre: entrada_nombre.trim().to_string(), 
-        precio: entrada_precio.trim().parse().expect("error al convertir precio"), 
-        numero_porciones: entrada_porciones.trim().parse().expect("error al convertir precio"), 
-        cantidad_consumidores: entrada_consumidores.trim().parse().expect("error al convertir precio"),  
-    };
+        
+        contador += 1;
+        println!("------- COTIZACION {} --------",contador);
+        println!("Ingresa el nombre del Producto");
+        io::stdin().read_line(&mut entrada_nombre).expect("error en la lectura del nombre");
+        println!("Ingresa el precio del Producto");
+        io::stdin().read_line(&mut entrada_precio).expect("error en la lectura del precio");
+        println!("Ingresa el numero de porciones del Producto");
+        io::stdin().read_line(&mut entrada_porciones).expect("error en la lectura del numero de porciones");
+        println!("Ingresa el la cantidad de consumidores del Producto");
+        io::stdin().read_line(&mut entrada_consumidores).expect("error en la lectura de los consumidores");
 
+        // limpiamos y transformamos los datos
+        if opcion_01.precio == 0.0 {
+            opcion_01 = productos { 
+                nombre: entrada_nombre.trim().to_string(), 
+                precio: entrada_precio.trim().parse().expect("error al convertir precio"), 
+                numero_porciones: entrada_porciones.trim().parse().expect("error al convertir precio"), 
+                cantidad_consumidores: entrada_consumidores.trim().parse().expect("error al convertir precio"),  
+            };
+        } else {
+            opcion_02 = productos { 
+                nombre: entrada_nombre.trim().to_string(), 
+                precio: entrada_precio.trim().parse().expect("error al convertir precio"), 
+                numero_porciones: entrada_porciones.trim().parse().expect("error al convertir precio"), 
+                cantidad_consumidores: entrada_consumidores.trim().parse().expect("error al convertir precio"),  
+            };
+            break;
+        }
+    }
     // imprime la facturafacturacion
 
-    let mensaje_factura = format!(
+    let mensaje_factura_01 = format!(
         "\n------FACTURA------\n\
         nombre   : {}\n\
         precio   : {}\n\
@@ -77,7 +103,20 @@ pub fn adso_cotizacion_comida(){
         opcion_01.costo_total()
     );
 
-    println!("{}", mensaje_factura);
+    let mensaje_factura_02 = format!(
+        "\n------FACTURA------\n\
+        nombre   : {}\n\
+        precio   : {}\n\
+        cantidad : {}\n\n\
+        primer total : {}\n",
+        opcion_02.nombre,
+        opcion_02.precio,
+        opcion_02.cantidad_necesaria_del_producto(),
+        opcion_02.costo_total()
+    );
+
+
+    println!("{}{}", mensaje_factura_01,mensaje_factura_02);
 
     
 }
