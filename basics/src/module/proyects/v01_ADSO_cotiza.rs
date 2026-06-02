@@ -32,8 +32,10 @@ impl productos {
         self.cantidad_necesaria_del_producto() as f64 * self.precio
     }
 
+    fn pago_por_persona(&self) -> f64 {
+    self.costo_total() / self.cantidad_consumidores as f64
+    }
 }
-
 
 pub fn adso_cotizacion_comida(){
 
@@ -89,6 +91,8 @@ pub fn adso_cotizacion_comida(){
             break;
         }
     }
+
+
     // imprime la facturafacturacion
 
     let mensaje_factura_01 = format!(
@@ -96,11 +100,13 @@ pub fn adso_cotizacion_comida(){
         nombre   : {}\n\
         precio   : {}\n\
         cantidad : {}\n\n\
-        primer total : {}\n",
+        primer total : {}\n
+        pago por persona : {}\n",
         opcion_01.nombre,
         opcion_01.precio,
         opcion_01.cantidad_necesaria_del_producto(),
-        opcion_01.costo_total()
+        opcion_01.costo_total(),
+        opcion_01.pago_por_persona()
     );
 
     let mensaje_factura_02 = format!(
@@ -108,11 +114,13 @@ pub fn adso_cotizacion_comida(){
         nombre   : {}\n\
         precio   : {}\n\
         cantidad : {}\n\n\
-        segundo total : {}\n",
+        segundo total : {}\n
+        pago por persona : {}\n",
         opcion_02.nombre,
         opcion_02.precio,
         opcion_02.cantidad_necesaria_del_producto(),
-        opcion_02.costo_total()
+        opcion_02.costo_total(),
+        opcion_02.pago_por_persona()
     );
 
 
