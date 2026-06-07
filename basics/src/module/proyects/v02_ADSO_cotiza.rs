@@ -8,8 +8,8 @@ struct ProductoInformacion{
 impl ProductoInformacion{
 }
 
-fn menu() {
-    let mut menu_completo = format!{
+fn menu_completo() {
+    let menu = format!{
        "(A). Ingresar un nuevo producto\n
         (B). Agregar Parametros Adicionales\n
         (C). Mostrar Factura\n
@@ -25,10 +25,10 @@ pub fn cotizacion(){
     loop {
         let mut entrada_menu : String = String::new();
         println!("!!!!Bienvenido A cotizador ADSO!!!!");
-        menu();
-        match io::stdin().read_line(&mut entrada_menu) {
-            Ok(_) => {},
-            Err(_) => {entrada_menu = "r232"},
+        menu_completo();
+        if let Err(e) =  io::stdin().read_line(&mut entrada_menu){
+            eprintln!("error al recibir la entrada del menu");
+            continue;
         }
 
     }
