@@ -57,35 +57,64 @@ pub fn cotizacion(){
             "A" => {
 
                 // Solicitamos los datos necesarios del producto
+                loop {
+                    entrada_producto_nombre.clear();
+                    entrada_producto_precio.clear();
+                    entrada_producto_porciones.clear();
+                    
+                    println!("Ingrese el nombre del producto");
+                    if let Err(e) = io::stdin().read_line(&mut entrada_producto_nombre){
+                        eprintln!("error al recibir la entrada del menu");
+                        panic!();
+                    };
+                    
 
-                println!("Ingrese el nombre del producto");
-                if let Err(e) = io::stdin().read_line(&mut entrada_producto_nombre){
-                    eprintln!("error al recibir la entrada del menu");
-                    panic!();
-                };
-                
+                    println!("ingrese el precio del producto");
+                    if let Err(e) = io::stdin().read_line(&mut entrada_producto_precio){
+                        eprintln!("error al recibir la entrada del menu");
+                        panic!();
+                    };
 
-                println!("ingrese el precio del producto");
-                if let Err(e) = io::stdin().read_line(&mut entrada_producto_precio){
-                    eprintln!("error al recibir la entrada del menu");
-                    panic!();
-                };
+                    println!("Ingrese el numero de porciones del producto");
+                    if let Err(e) = io::stdin().read_line(&mut entrada_producto_porciones){
+                        eprintln!("error al recibir la entrada del menu");
+                        panic!();
+                    };
 
-                println!("Ingrese el numero de porciones del producto");
-                if let Err(e) = io::stdin().read_line(&mut entrada_producto_porciones){
-                    eprintln!("error al recibir la entrada del menu");
-                    panic!();
-                };
+                    let mut entrada_base_datos : ProductoInformacion = ProductoInformacion { 
+                        nombre: entrada_producto_nombre.trim().to_string(), 
+                        precio_unitario: entrada_producto_precio.trim().parse().expect("precio unitario fallido intentelo nuevamente"), 
+                        porciones: entrada_producto_porciones.trim().parse().expect(""), 
+                    };
 
-                let mut entrada_base_datos : ProductoInformacion = ProductoInformacion { 
-                    nombre: entrada_producto_nombre.trim().to_string(), 
-                    precio_unitario: entrada_producto_precio.trim().parse().expect("precio unitario fallido intentelo nuevamente"), 
-                    porciones: entrada_producto_porciones.trim().parse().expect(""), 
-                };
+                    //Ingresamos el producto a la base de datos 
 
-                //Ingresamos el producto a la base de datos 
+                    base_datos_temporal.push(entrada_base_datos);
 
-                base_datos_temporal.push(entrada_base_datos);
+                    //rompermos o continuamos con el ciclo
+
+                    println!("Desea ingresar mas productos?(S o N)");
+                    let mut entrada_opcion: String = String::new();
+                    if let Err(e) = io::stdin().read_line(&mut entrada_opcion){
+                        eprintln!("error al recibir la entrada del menu");
+                        panic!();
+                    };
+
+                    // estudiar a mas profuncidad
+                    let opcion_elegida = entrada_opcion.trim().to_uppercase().chars().next();
+
+                    // 3. Evaluamos la opción usando Dust Matching o un If Let
+                    if let Some('N') = opcion_elegida {
+                        println!("Saliendo del ingreso de productos...");
+                        // Aquí iría un 'break;' si estás dentro de un loop
+                    } else if let Some('S') = opcion_elegida {
+                        println!("Continuando...");
+                    } else {
+                        println!("Opción no válida, se asumirá que no deseas continuar.");
+                    }
+
+
+                }
 
 
             },
