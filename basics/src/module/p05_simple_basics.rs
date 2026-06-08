@@ -11,11 +11,11 @@ pub fn errores(){
             let mut entrada_menu : String = String::new();
             println!("!!!!Bienvenido A cotizador ADSO!!!!");
             menu_completo();
-            if let Err(e) =  io::stdin().read_line(&mut entrada_menu){
+            if let Err(_) =  io::stdin().read_line(&mut entrada_menu){
                 eprintln!("error al recibir la entrada del menu");
                 continue;//hace otra iteracion del loop como un "intentalo de nuevo"
             }
-
         }
+        
     
 }

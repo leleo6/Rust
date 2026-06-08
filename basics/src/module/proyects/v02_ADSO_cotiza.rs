@@ -1,4 +1,4 @@
-use std::io;
+use std::{io, ops::ControlFlow::Continue};
 
 struct ProductoInformacion{
     nombre          : String,
@@ -10,26 +10,42 @@ impl ProductoInformacion{
 
 fn menu_completo() {
     let menu = format!{
-       "(A). Ingresar un nuevo producto\n
-        (B). Agregar Parametros Adicionales\n
-        (C). Mostrar Factura\n
-        (D). Limpiar\n
-        (E). Salir\n
+        "        (A). Ingresar un nuevo producto
+        (B). Agregar Parametros Adicionales
+        (C). Mostrar Factura
+        (D). Limpiar
+        (E). Salir
         "
     };
+    println!("{menu}");
 }
 
 
 
 pub fn cotizacion(){
+    let mut entrada_menu : String = String::new();
+    println!("!!!!Bienvenido A cotizador ADSO!!!!");
     loop {
-        let mut entrada_menu : String = String::new();
-        println!("!!!!Bienvenido A cotizador ADSO!!!!");
+        entrada_menu.clear();
+
         menu_completo();
         if let Err(e) =  io::stdin().read_line(&mut entrada_menu){
             eprintln!("error al recibir la entrada del menu");
             continue;
         }
-
+        let entrada:&str = &entrada_menu.trim().to_uppercase();
+        match &entrada as &str {
+            "A" => println!("funciona la obcion A"),
+            "B" => println!("funciona la opcion B"),
+            "C" => println!("funciona la opcion C"),
+            "D" => println!("funciona la opcion D"),
+            "E" => {
+                println!("Hasta la proximaaaa.....");
+                break;
+            },
+             _  => {println!("opcion no valida intentalo nuevamente");
+            continue;},
+            
+        }
     }
 }
