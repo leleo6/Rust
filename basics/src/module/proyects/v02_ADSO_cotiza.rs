@@ -26,7 +26,7 @@ pub fn cotizacion(){
     let mut entrada_menu : String = String::new();
     println!("!!!!Bienvenido A cotizador ADSO!!!!");
     loop {
-        entrada_menu.clear();
+        entrada_menu.clear();//limpia el contenido de la variable
 
         menu_completo();
         if let Err(e) =  io::stdin().read_line(&mut entrada_menu){
