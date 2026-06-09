@@ -1,6 +1,8 @@
 //manejo de errores
+use std::io;
 
 pub fn errores(){
+    let mut entrada_menu =String::new();
     //useo de match para errores cuando se nececita hacer acciones complejas cuanco aparece un error 
         match io::stdin().read_line(&mut entrada_menu) {
             Ok(_) => {},
@@ -10,9 +12,8 @@ pub fn errores(){
         loop {
             let mut entrada_menu : String = String::new();
             println!("!!!!Bienvenido A cotizador ADSO!!!!");
-            menu_completo();
-            if let Err(_) =  io::stdin().read_line(&mut entrada_menu){
-                eprintln!("error al recibir la entrada del menu");
+            if let Err(e) =  io::stdin().read_line(&mut entrada_menu){
+                eprintln!("error al recibir la entrada del menu {}",e);
                 continue;//hace otra iteracion del loop como un "intentalo de nuevo"
             }
         }
