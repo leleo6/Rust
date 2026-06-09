@@ -27,5 +27,27 @@ pub fn simple_basic(){
     println!("Incremento: {}", incrementar());
 
     //cada vez que se usa la funcion anonima incrementa la variable contador
-    
+
+}
+
+/*
+Iteradores
+Basicamente es como una sinta transportadora en una fabrica
+en ella se hacen diversas cosas como sellar o empacar 
+antes de llegar a un producto final y ese seria el .collect()
+
+y esto basicamente se hace usando metodosz
+(aclaracion para que sea una iteracion tiene que recorrer algo como un vector
+o hacer un ciclo que de multiples vueltas)
+
+
+*/
+fn simple_basic_02(){
+    let numeros = vec![1, 2, 3, 4, 5];
+    let cuadrados_pares: Vec<i32> = numeros
+        .iter()               // iterador sobre referencias &i32
+        .filter(|&&x| x % 2 == 0) // filtramos pares
+        .map(|&x| x * x)       // elevamos al cuadrado
+        .collect();             // recolectamos en Vec
+    println!("{:?}", cuadrados_pares); // [4, 16]
 }
