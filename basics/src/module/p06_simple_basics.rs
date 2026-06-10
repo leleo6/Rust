@@ -36,7 +36,7 @@ Basicamente es como una sinta transportadora en una fabrica
 en ella se hacen diversas cosas como sellar o empacar 
 antes de llegar a un producto final y ese seria el .collect()
 
-y esto basicamente se hace usando metodosz
+y esto basicamente se hace usando metodos
 (aclaracion para que sea una iteracion tiene que recorrer algo como un vector
 o hacer un ciclo que de multiples vueltas)
 
