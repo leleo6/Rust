@@ -12,7 +12,7 @@ fn mayor<T: PartialOrd>(a: T, b: T) -> T {
     if a > b { a } else { b }
 }
 
-fn main() {
+pub fn genericos() {
     let entero = mayor(10, 20);
     let flotante = mayor(3.14, 2.71);
     let caracter = mayor('x', 'a');

@@ -7,3 +7,5 @@ pub mod p05_simple_basics;
 pub mod p06_simple_basics;
 pub mod p07_simple_basics;
 pub mod p08_simple_basics;
+pub mod p09_simple_basics;
+pub mod p10_simple_basics;
