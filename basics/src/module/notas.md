@@ -13,3 +13,7 @@ Result<T, E>
 Ok(T)
 Err(E)
 // basicamente es lo mismo si esta bien lo lleva a T y si esta mal a E
+
+
+
+todo es privado al 100% hasta que se le pone el pub (aunque la funcion este adentro de un mod pub es privada hasta que se le ponga el pub)

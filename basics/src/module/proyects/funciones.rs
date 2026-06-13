@@ -9,6 +9,15 @@ pub mod funciones_utiles {
             fecha_nacimiento:String,
         }
         impl cedula {
+        pub fn listar_datos_cedula(&self){
+            println!("
+                Primer Nombre  :   {}
+                Segundo Nombre :   {}
+                Apellido :         {}
+                Documento :        {}
+                Fecha nacimiento : {}
+            ",self.primer_nombre,self.segundo_nombre,self.apellidos,self.numero_documento,self.fecha_nacimiento)
+        }
             pub fn solicitar_datos(& mut self){
                 let mut entrada =String::new();
 
@@ -60,6 +69,7 @@ pub mod funciones_utiles {
                     
                 };
             };
+            self.listar_datos_cedula();
         }
     }
 }
