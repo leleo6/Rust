@@ -1,3 +1,4 @@
+#[allow(dead_code)]
 pub mod funciones_utiles {
     use std::{io,};
 
