@@ -9,7 +9,7 @@ pub fn simple_basic(){
     // Captura del entorno
     let limite = 10;
     let es_mayor_que_limite = |x: i32| x > limite; // captura &limite inmutable
-    // la bariable de arriba devuelve un boleano true or falce
+    // la variable de arriba devuelve un boleano true or falce
 
     for n in [5, 12, 8] {
         println!("{n} > {limite}? {}", es_mayor_que_limite(n));
