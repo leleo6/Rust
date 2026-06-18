@@ -37,3 +37,23 @@ basicamente solo se usa cuando se nececitan comparar datos y guardar datos de fo
     struct Estructura<'a> {
         campo: &'a str,  // & = referencia
     }
+
+
+Iteradores
+creacion de iteradores usa estos metodos
+ - .iter      |toma los elementos como una referencia inmutable
+ - .iter_mut  |toma los elementos como una referencia mutable
+ - .into_iter |toma la propiedad total de los elementos que maneja
+
+NOTA: Cuando escribes for x in numeros (sin llamar a ningún método), Rust automáticamente expande eso a for x in numeros.into_iter().
+
+mas metodos
+
+.map()        | aplica una funcion(closures) en cada iteracion
+.filter()     | aplica una condicion(true or false) para filtar se usa con closures
+.filter_map() | debuelve un tipo option (some(guarda el valor), none(elimina el valor))
+.enumerate    | Modifica el iterador para que devuelva una tupla
+
+por ultimo para recoger lo optenido de los iteradores se usa
+.collect()    | Transforma el iterador de vuelta en una colección (como un Vec, HashMap, etc.). 
+                Rust es tan inteligente que infiere el tipo de colección que quieres si se lo especificas en la variable.
