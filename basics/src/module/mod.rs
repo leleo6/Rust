@@ -1,11 +1,15 @@
-pub mod p01_simple_basics;
+#[path = "program-basics"]
+pub mod program_basics {
+    pub mod p01_simple_basics;
+    pub mod p02_simple_basics;
+    pub mod p03_simple_basics;
+    pub mod p04_simple_basics;
+    pub mod p05_simple_basics;
+    pub mod p06_simple_basics;
+    pub mod p07_simple_basics;
+    pub mod p08_simple_basics;
+    pub mod p09_simple_basics;
+    pub mod p10_simple_basics;
+}
+
 pub mod proyects;
-pub mod p02_simple_basics;
-pub mod p03_simple_basics;
-pub mod p04_simple_basics;
-pub mod p05_simple_basics;
-pub mod p06_simple_basics;
-pub mod p07_simple_basics;
-pub mod p08_simple_basics;
-pub mod p09_simple_basics;
-pub mod p10_simple_basics;

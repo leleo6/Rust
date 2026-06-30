@@ -73,7 +73,7 @@ impl ArbolBinario {
 
 // Función para probar tu implementación
 fn main() {
-    let mut arbol = ArbolBinario::new();
+    let mut arbol = ArbolBinario::nuevo();
     
     // Insertamos datos
     arbol.insertar(15);
